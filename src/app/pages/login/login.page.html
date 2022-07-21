@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+
+  <form [formGroup]="credentialForm">
+    <ion-item>
+      <ion-input formControlName="email" 
+                 placeholder="Email Address"
+                 autofocus="true"
+                 clearInput="true">
+      </ion-input>
+    </ion-item>
+    <div *ngIf="(email.dirty || email.touched) && email.errors" class="erros">
+         <span *ngIf="email.errors?.required">Email is required</span>
+         <span *ngIf="email.errors?.email">Email is invalid</span>
+    </div>
+    <ion-item>
+      <ion-input formControlName="password" 
+                 placeholder="password"
+                 type="password"
+                 clearInput="true">
+      </ion-input>
+    </ion-item>
+    <div *ngIf="(password.dirty || password.touched) && password.errors" class="erros">
+      <span *ngIf="password.errors?.required">Password is required</span>
+      <span *ngIf="password.errors?.minlength">Password needs to be 6 characters</span>
+ </div>
+  </form>
+
+  <ion-button (click)="signUp()" expand="full">
+    signUp
+  </ion-button>
+  <ion-button (click)="signIn()" expand="full" color="secondary">
+    signIn
+  </ion-button>
+
+</ion-content>
